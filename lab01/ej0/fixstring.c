@@ -5,16 +5,19 @@
 
 unsigned int fstring_length(fixstring s) {
     unsigned int length=0;
-    for (int i = 0; i < 100 && s[i] != '\0'; i++){
-            length++;
+    while (length<FIXSTRING_MAX && s[length]!='\0'){
+        length++;
     }
-return length;
+    assert(length<FIXSTRING_MAX);
+    return length;
 }
 
 bool fstring_eq(fixstring s1, fixstring s2) {
     bool isEq = true;
-    if(fstring_length(s1)==fstring_length(s2)){
-        for (int i = 0; i < fstring_length(s1) && isEq; i++){
+    unsigned int tam1= fstring_length(s1);
+    unsigned int tam2=fstring_length(s2);
+    if(tam1==tam2){
+        for (unsigned int i = 0; i < tam1 && isEq; i++){
             if(s1[i]!=s2[i]){
                 isEq = false;
             }
@@ -27,15 +30,14 @@ bool fstring_eq(fixstring s1, fixstring s2) {
 }
 
 bool fstring_less_eq(fixstring s1, fixstring s2) {
-    bool leesEq = false;
-    bool b = true;
-    for ( int i = 0; i < 100 && !leesEq && b; i++){
-        if(s1[i]<s2[i]){
-            leesEq = true;
-        }else if(s1[i]>s2[i]){
-            b = false;
-        }
+    bool leesEq = true;
+    unsigned int i = 0;
+    unsigned int tam1 = fstring_length(s1);
+    unsigned int tam2 = fstring_length(s2);
+    while (s1[i]==s2[i] && i<tam1 && i<tam2){
+        i++;
     }
+    leesEq = s1[i]<=s2[i];
     return leesEq;
 }
 

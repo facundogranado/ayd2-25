@@ -56,7 +56,11 @@ int main(int argc, char *argv[]) {
 
     /* create a copy of the array */
     int copy[MAX_SIZE];
+    int copy2[MAX_SIZE];
+    int copy3[MAX_SIZE];
     array_copy(copy, array, length);
+    array_copy(copy2, array, length);
+    array_copy(copy3, array, length);
 
     /* reset counters and set time */
     reset_comparisons_counter();
@@ -77,6 +81,17 @@ int main(int argc, char *argv[]) {
        copiar el arreglo original, resetear los contadores y setear el tiempo.
     */
     /* needs implementation */
+    /* reset counters and set time */
+    reset_comparisons_counter();
+    reset_swaps_counter();
+    set_current_time();
+
+    /* do the actual sorting */
+    insertion_sort(copy2, length);
+
+    /* show statistics for insertion_sort_sort */
+    printf("statistics for insertion_sort\n");
+    printf("time elapsed=%g,    comparisons: %10u,    swaps: %10u\n", calculate_elapsed_time(), comparisons_number(), swaps_number());
 
 
     /* all the same for quick_sort */
@@ -86,6 +101,17 @@ int main(int argc, char *argv[]) {
        copiar el arreglo original, resetear los contadores y setear el tiempo.
     */
     /* needs implementation */
+    /* reset counters and set time */
+    reset_comparisons_counter();
+    reset_swaps_counter();
+    set_current_time();
+
+    /* do the actual sorting */
+    quick_sort(copy3, length);
+
+    /* show statistics for quick_sort */
+    printf("statistics for quick_sort\n");
+    printf("time elapsed=%g,    comparisons: %10u,    swaps: %10u\n", calculate_elapsed_time(), comparisons_number(), swaps_number());
 
 
 

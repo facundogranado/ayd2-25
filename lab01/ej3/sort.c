@@ -9,17 +9,6 @@
 
 
 static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
-    /* Needs implementation */
-
-    /* PRECONDITION: 
-       0 <= izq < der < length of the array
-
-     Permutes elements of a[izq..der] and returns pivot such that:
-     - izq <= pivot <= der
-     - elements in a[izq,pivot) all 'go_before' (according to function goes_before) a[pivot]
-     - a[pivot] 'goes_before' all the elements in a(pivot,der]
-    */
-
     int i,j;
     int ppiv;
     ppiv = izq;
@@ -39,20 +28,25 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
     return ppiv;
 }
 
-static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
+static void quick_sort_rec(int a[], unsigned int izq, unsigned int der,unsigned int lenght) {
     unsigned int ppvi;
     if(der>izq){
+        printf("izq:%i\n",izq);
+        printf("der:%i\n",der);
+        array_dump(a,lenght);
         ppvi = partition(a,izq,der);
-        if (ppvi==0)
-        {   quick_sort_rec(a,izq,ppvi);    
+        printf("ppvi:%i\n",ppvi);
+        array_dump(a,lenght);
+        if (ppvi==0){
+            quick_sort_rec(a,izq,ppvi,lenght);    
         }else{
-            quick_sort_rec(a,izq,ppvi-1); 
+            quick_sort_rec(a,izq,ppvi-1,lenght); 
         }
-        quick_sort_rec(a,ppvi+1,der);
+        quick_sort_rec(a,ppvi+1,der,lenght);
     }
 }
 
 void quick_sort(int a[], unsigned int length) {
-    quick_sort_rec(a, 0, (length == 0) ? 0 : length - 1);
+    quick_sort_rec(a, 0, (length == 0) ? 0 : length - 1,length);
 }
 

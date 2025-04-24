@@ -3,7 +3,7 @@
 #include "cima_log.h"
 
 int main(void) {
-    int a[] = {-2, 8, 9, 5, 0};
+    int a[] = {-2, 10, 9, 5, 0};
     int length = 5;
     int result;
 

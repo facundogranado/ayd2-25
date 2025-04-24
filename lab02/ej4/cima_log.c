@@ -16,7 +16,7 @@
  * @param length Largo del arreglo.
  */
 
- bool tiene_cima(int a[], int length) {
+ bool tiene_cima1(int a[], int length) {
     int k=0;
     while (k<length-1 && a[k]<a[k+1])
     {
@@ -31,20 +31,20 @@
 
 
  bool es_cima(int a[],int i,int length){
-    assert(tiene_cima(a,length));
+    assert(tiene_cima1(a,length));
     return (i == 0 || a[i] > a[i-1]) && (i == length - 1 || a[i] > a[i+1]);
 }
 
 bool izq_cima(int a[],int i,int length){
-    assert(tiene_cima(a,length));
+    assert(tiene_cima1(a,length));
     return i>0 && a[i]<a[i-1];  
 }
 bool der_cima(int a[],int i,int length){
-    assert(tiene_cima(a,length));
+    assert(tiene_cima1(a,length));
     return i<length-1 && a[i]<a[i+1];
 }
 int cima_rec(int a[],int left,int rgt,int length){
-    assert(tiene_cima(a,length));
+    assert(tiene_cima1(a,length));
     int result;
     int mid = (left + rgt) / 2;
     if(es_cima(a,mid,length)){
